@@ -4,6 +4,22 @@
 --   status = menuOpen
 -- })
 
+RegisterNetEvent('dmg')
+AddEventHandler('dmg', function(arg)
+  local ent = GetPlayerPed(-1)
+  SetEntityHealth(ent, GetEntityHealth(ent) - 10)
+end)
+
+RegisterNetEvent('heal')
+AddEventHandler('heal', function(arg)
+  local ent = GetPlayerPed(-1)
+  local currentHealth = GetEntityHealth(ent);
+
+  if currentHealth < 200 then
+    SetEntityHealth(ent, GetEntityHealth(ent) + 10)
+  end
+end)
+
 Citizen.CreateThread(function()
   while true do
     Citizen.Wait(100)

@@ -10,8 +10,12 @@
   <div id="container">
     <template v-if="show">
 
-      <div class="health-bar">
-        {{ health }}
+      <div class="health-bar-container">
+        <div class="bar">
+          <div id="health-bar-internal">
+            {{ health }}
+          </div>
+        </div>
       </div>
     </template>
 
