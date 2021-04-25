@@ -1,8 +1,8 @@
--- Sending info to healthbar
--- SendNUIMessage({
---   type = 'ui',
---   status = menuOpen
--- })
+local currentPlayerPedId = nil
+
+AddEventHandler('playerSpawned', function()
+	currentPlayerPedId = PlayerPedId()
+end)
 
 RegisterNetEvent('dmg')
 AddEventHandler('dmg', function(arg)
@@ -20,15 +20,24 @@ AddEventHandler('heal', function(arg)
   end
 end)
 
+RegisterNetEvent('armour')
+AddEventHandler('armour', function(arg)
+  local ent = GetPlayerPed(-1)
+  SetPedArmour(ent, 100)
+end)
+
+
 Citizen.CreateThread(function()
+  currentPlayerPedId = PlayerPedId()
+
   while true do
     Citizen.Wait(100)
 
     SendNUIMessage({
       show = IsPauseMenuActive(),
-      health = GetEntityHealth(GetPlayerPed(-1)) - 100,
-      armor = GetPedArmour(GetPlayerPed(-1)),
-      stamina = 100 - GetPlayerSprintStaminaRemaining(PlayerId())
+      health = GetEntityHealth(currentPlayerPedId) - 100,
+      armour = GetPedArmour(currentPlayerPedId),
+      stamina = 100 - GetPlayerSprintStaminaRemaining(currentPlayerPedId)
     })
   end
 end)

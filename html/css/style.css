@@ -7,10 +7,89 @@
 #container {
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-end;
 }
 
+.bar-container {
+  margin: 24px;
+  width: 250px;
+  height: 89px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.bar-container > div {
+  height: 25px;
+  width: 100%;
+
+  display: flex;
+}
+
+/* #F44336 */
+.health-bar > .icon {
+  background-color: rgb(195 54 43);
+}
+
+#health-bar-internal {
+  background-color: #F44336;
+  width: 1%;
+}
+
+/* #1565C0 */
+.armour-bar > .icon {
+  background-color: rgb(17 81 154);;
+}
+
+#armour-bar-internal {
+  background-color: #1565C0;
+  width: 1%;
+}
+
+/* #FFC107 */
+.stamina-bar > .icon {
+  background-color: rgb(204 155 6);;
+}
+
+#stamina-bar-internal {
+  background-color: #FFC107;
+  width: 1%;
+}
+
+.in {
+  height: 100%;
+  
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 50;
+}
+
+.icon {
+  height: 25px;
+  width: 25px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.icon > i {
+  color: white;
+}
+
+.bar {
+  width: calc(100% - 25px);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+
+
+/* 
 #container > .health-bar-container {
   font-size: 20px;
   font-weight: bold;
@@ -20,16 +99,36 @@
   align-items: center;
 
   margin-bottom: 151px;
+  flex-direction: column;
+
+  -webkit-text-stroke: 0.3px white;
+  -webkit-text-fill-color: black;
 }
 
 .bar {
   width: 500px;
-  height: 30px;
-  background-color: black;
+  height: 18px;
+  position: relative;
 }
 
-.bar > #health-bar-internal {
+#health-bar-internal {
   width: 1%;
   height: 100%;
-  background-color: #4CAF50;
+  background: rgb(46,125,50);
+  background: linear-gradient(0deg, rgba(46,125,50,1) 29%, rgba(56,142,60,1) 56%, rgba(67,160,71,1) 79%);
+  border-radius: 6px;
+
+  z-index: 50;
 }
+
+#health-bar-leftover {
+  position: absolute;
+  top: 0;
+  height: 18px;
+  width: 500px;
+  background: rgb(198,40,40);
+  background: linear-gradient(0deg, rgba(198,40,40,1) 29%, rgba(211,47,47,1) 56%, rgba(229,57,53,1) 79%);
+
+  z-index: 1;
+  border-radius: 6px;
+} */

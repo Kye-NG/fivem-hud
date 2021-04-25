@@ -10,33 +10,56 @@ const app = new Vue({
   created: function() {
     window.addEventListener('message', this.setupMessageListener);
   },
+  mounted: function () {
+    setTimeout(() => {
+      
+    this.moveHealthBar(100);
+    this.moveArmour(50);
+    this.moveStamina(30);
+    }, 2000);
+  },
   methods: {
     setupMessageListener(event) {
       const item = event.data;
 
-      this.show = !item.show;
       this.moveHealthBar(item.health);
-      this.health = item.health;
-      this.armour = item.armour;
-      this.stamina = item.stamina;
+      this.moveArmour(item.armour);
+      this.moveStamina(item.stamina);
+
+      this.show = !item.show;
     },
     moveHealthBar(health) {
+      if (health <= 0) {
+        health = 0;
+      }
+
+      this.health = health;
+
       const barElement = document.getElementById('health-bar-internal');
 
       barElement.style.width = `${health}%`;
-      // this.healthMoveInterval = setInterval(frame, 10);
+    },
+    moveArmour(armour) {
+      if (armour <= 0) {
+        armour = 0;
+      }
 
-      // function frame() {
-      //   barElement.style.width 
+      this.armour = armour;
 
-      //   if (width >= 100) {
-      //     clearInterval(id);
-      //     i = 0;
-      //   } else {
-      //     width++;
-      //     barElement.style.width = width + "%";
-      //   }
-      // }
+      const barElement = document.getElementById('armour-bar-internal');
+
+      barElement.style.width = `${armour}%`;
+    },
+    moveStamina(stamina) {
+      if (stamina <= 0) {
+        stamina = 0;
+      }
+
+      this.stamina = stamina;
+
+      const barElement = document.getElementById('stamina-bar-internal');
+
+      barElement.style.width = `${stamina}%`;
     }
   }
 })

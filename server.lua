@@ -13,3 +13,11 @@ RegisterCommand('heal', function(source, args)
     print('Server cannot run this command')
   end
 end)
+
+RegisterCommand('armour', function(source, args)
+  if (source > 0) then
+    TriggerClientEvent('armour', source, '')
+  else
+    print('Server cannot run this command')
+  end
+end)

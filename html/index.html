@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://kit.fontawesome.com/e1facacd49.js" crossorigin="anonymous"></script>
   <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -10,13 +11,41 @@
   <div id="container">
     <template v-if="show">
 
-      <div class="health-bar-container">
-        <div class="bar">
-          <div id="health-bar-internal">
-            {{ health }}
+      <div class="bar-container">
+        <div class="health-bar">
+          <div class="icon">
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="bar">
+            <div id="health-bar-internal" class="in"></div>
+          </div>
+        </div>
+        <div class="armour-bar">
+          <div class="icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="bar">
+            <div id="armour-bar-internal" class="in"></div>
+          </div>
+        </div>
+        <div class="stamina-bar">
+          <div class="icon">
+            <i class="fas fa-running"></i>
+          </div>
+          <div class="bar">
+            <div id="stamina-bar-internal" class="in"></div>
           </div>
         </div>
       </div>
+
+<!--       
+      <div class="health-bar-container">
+        <div class="bar">
+          <div id="health-bar-leftover">
+            
+          </div>
+        </div>
+      </div> -->
     </template>
 
   </div>
