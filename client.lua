@@ -1,4 +1,5 @@
 local currentPlayerPedId = nil
+local currentPlayerId = nil
 
 AddEventHandler('playerSpawned', function()
 	currentPlayerPedId = PlayerPedId()
@@ -29,6 +30,7 @@ end)
 
 Citizen.CreateThread(function()
   currentPlayerPedId = PlayerPedId()
+  currentPlayerId = PlayerId()
 
   while true do
     Citizen.Wait(100)
@@ -37,7 +39,7 @@ Citizen.CreateThread(function()
       show = IsPauseMenuActive(),
       health = GetEntityHealth(currentPlayerPedId) - 100,
       armour = GetPedArmour(currentPlayerPedId),
-      stamina = 100 - GetPlayerSprintStaminaRemaining(currentPlayerPedId)
+      stamina = 100 - GetPlayerSprintStaminaRemaining(currentPlayerId)
     })
   end
 end)
