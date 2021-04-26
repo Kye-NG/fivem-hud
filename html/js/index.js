@@ -37,7 +37,9 @@ const app = new Vue({
 
       const barElement = document.getElementById('health-bar-internal');
 
-      barElement.style.width = `${health}%`;
+      if (barElement) {
+        barElement.style.width = `${health}%`;
+      }
     },
     moveArmour(armour) {
       if (armour <= 0) {
@@ -48,7 +50,9 @@ const app = new Vue({
 
       const barElement = document.getElementById('armour-bar-internal');
 
-      barElement.style.width = `${armour}%`;
+      if (barElement) {
+        barElement.style.width = `${armour}%`;
+      }
     },
     moveStamina(stamina) {
       if (stamina <= 0) {
@@ -59,7 +63,9 @@ const app = new Vue({
 
       const barElement = document.getElementById('stamina-bar-internal');
 
-      barElement.style.width = `${stamina}%`;
+      if (barElement) {
+        barElement.style.width = `${stamina}%`;
+      }
     }
   }
 })
